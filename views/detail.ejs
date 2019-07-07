@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Chi tiết phòng trọ</title>
+</head>
+<script type = "text/javascript" src = "http://code.jquery.com/jquery-1.8.3.min.js"></script>
+<script type = "text/javascript" src = "slide.js"></script>
+<link  type = "text/css" href = "/detail.css" rel = "stylesheet" media = "screen">
+<link  type = "text/css" href = "/css/footer.css" rel = "stylesheet" media = "screen">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Comfortaa" />
+	<style>
+	        .myButton{
+                height: 50px;
+                padding-top: 30px;
+                font-size: 15px;
+                background-color: #00ccff;
+                border-radius: 5px;
+                border: none;
+            }
+            .myButton:hover{
+                color: white;
+            }
+            .myTextarea{
+                border: none;
+                border-bottom: 1px solid lightgray;
+            }
+			#myDIV{
+            }
+            img{
+                border: 1px solid #3399ff;
+                height: 40px;
+                width: 40px;
+                display: inline-block;
+            }
+			pre{
+                color: black;
+                border-bottom: 1px solid lightgray;
+                margin-left: 40px;
+            }
+            pre:hover{
+                border-color: gray;
+            }
+	</style>
+	<script>
+                    var y = 0;
+                    function myFunction() {
+                        var x = document.getElementById("comment").value;
+                        var myImage = document.createElement("IMG");
+                        var para = document.createElement("PRE");
+						var para1 = document.createElement("LABLE");
+                        document.getElementById("comment").value = "";
+                        myImage.src = src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTh3gC0RYb2XoamdOFnVC-bLl3V2lnhcMMT4bFs20jquiZGI1Ok";
+                        x = x.trim();
+                        para.innerHTML = x;
+						para1.innerHTML = "Admin";
+                        if(x.length > 0)
+                        {
+                        document.getElementById("myDIV").appendChild(myImage);
+						document.getElementById("myDIV").appendChild(para1);
+                        document.getElementById("myDIV").appendChild(para);
+                        }
+                    }
+        </script>
+
+<body>
+	<% var user;%>
+	<%- include('./partials/header.ejs', {user});%>
+        <div class="maindiv" style="height:1350px">
+		<div  class="col-md-6"><!-- danh sach hinh -->
+		<% var imgphong = phonginfor[0].img.split(",")%>
+		<p></p>
+			<span class="span5" style="font-family:Comfortaa; text-transform:  capitalize;"><b><%=phonginfor[0].loai%></b></span>
+			<span class="span6"><i style="color:#47A40E" class="fa fa-map-marker fa-3x"></i><b><span style="margin-left:10px;"><%=phonginfor[0].diachi%></span></b></span>
+			<span class="span7"><i style="color:#47A40E" class="fa fa-money fa-2x" aria-hidden="true"></i><b><span style="margin-left:10px;"><%=phonginfor[0].gia%></span></b></span><br/>
+			<b>Tiện ích</b><br/>
+			<img src="../anh/dientich.png"  style="height:80px; width:80px;margin-top: 0px"/> <span style="font-family:Comfortaa;"><b><%=phonginfor[0].dientich.split("m")[0]%>m<sup>2</sup></b></span>
+			<% if(phonginfor[0].wifi!=0){%>
+			<img src="../anh/wifi.png"  style="height:80px; width:80px; margin-left:25px"/>
+			<%}%>
+			<% if(phonginfor[0].maylanh!=0){%>
+				<img src="../anh/maylanh.png"  style="height:80px; width:80px; margin-left:35px"/>}
+				<%}%>
+
+			<div class="w3-content w3-display-container">
+		<% for (var i=0;i<imgphong.length;i++){
+			if(imgphong[i].includes("http")){%>
+	  <img class="mySlides" src="<%=imgphong[i]%>" style="width:100%; height:420px">
+		<%}else{%>
+			<img class="mySlides" src="../<%=imgphong[i]%>" style="width:100%; height:420px">
+		<%}}%>
+
+
+	  <button class="w3-button w3-black w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
+	  <button class="w3-button w3-black w3-display-right" onclick="plusDivs(1)">&#10095;</button>
+	</div>
+
+
+		</div>
+
+		<center>
+			<!-- title -->
+
+			<!-- thong tin nguoi moi gioi -->
+		<div  class="col-md-3"  style="background-color: white; margin-right:60px;">
+			<img class="rounded-circle" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTh3gC0RYb2XoamdOFnVC-bLl3V2lnhcMMT4bFs20jquiZGI1Ok">
+			<div class="content6"><br/>
+				Người đăng: <a href="#"style="font-size: 15px;">Admin</a><br/>
+				Phone: 0847402556
+				<p></p>
+				<!--<span style="font-size: 12px;">Môi giới</span>
+				<span style="font-size: 15px;">ĐT: 0354531407</span>-->
+			</div>
+		</div>
+			<!--phong tro cung khu vuc-->
+
+
+
+		<!-- thong tin chi tiet phong tro -->
+		<div class="col-md-6"  style="margin-top:20px;">
+		<div class="content7">
+
+			<span style="font-size: 19px;">Thông tin chính</span>
+			<div>
+				<span style="color: grey;">Giá </span>
+				<span style="color: grey;">Diện tích sử dụng </span>
+				<span style="color: grey;">Diện tích đất</span>
+				<span style="color: grey;">Ngày đăng</span>
+				<span style="color: grey;">Mã BDS</span>
+			</div>
+			<div>
+				<span>: 5 triệu</span>
+				<span>: 25m2</span>
+				<span>: 25m2</span>
+				<span>: 8/3/2019</span>
+				<span>: 123</span>
+			</div>
+			<div style="margin-left: 200px;">
+				<span style="color: grey;">Phòng ngủ </span>
+				<span style="color: grey;">Phòng tắm </span>
+				<span style="color: grey;">Pháp lý </span>
+				<span style="color: grey;">Hướng</span>
+
+			</div>
+			<div>
+				<span>: 5</span>
+				<span>: 2</span>
+				<span>: Không có</span>
+				<span>: Không có</span>
+			</div>
+
+		</div>
+		</div>
+	</center>
+	<div class="col-md-6"  style="margin-top:10px;">
+	        <div>
+			   <textarea class="myTextarea" rows="2" cols="88" id="comment" placeholder="Add a public comment..." style="display: inline-block;"></textarea>
+               <button class="myButton" type="button" onclick="myFunction()" style="display: inline-block;">COMMENT</button>
+		    </div>
+			<div id="myDIV"></div>
+	 </div>
+	</div>
+
+	   <%- include('./partials/footer.ejs') %>
+
+				<script>
+				var slideIndex = 1;
+				showDivs(slideIndex);
+
+				function plusDivs(n) {
+				  showDivs(slideIndex += n);
+				}
+
+				function showDivs(n) {
+				  var i;
+				  var x = document.getElementsByClassName("mySlides");
+				  if (n > x.length) {slideIndex = 1}
+				  if (n < 1) {slideIndex = x.length}
+				  for (i = 0; i < x.length; i++) {
+				    x[i].style.display = "none";
+				  }
+				  x[slideIndex-1].style.display = "block";
+				}
+				</script>
+</body>
+</html>
